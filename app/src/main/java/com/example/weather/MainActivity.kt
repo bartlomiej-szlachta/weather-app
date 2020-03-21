@@ -2,6 +2,8 @@ package com.example.weather
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import com.example.weather.dto.RootResponse
 import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
@@ -18,11 +20,18 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        button.setOnClickListener {
-            textView.text = "loading"
-            apiService.getWeatherData(editText.text.toString())
-                .enqueue(WeatherDataResponseHandler())
-        }
+        editText.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {}
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                textView.text = "loading"
+                apiService.getWeatherData(editText.text.toString())
+                    .enqueue(WeatherDataResponseHandler())
+            }
+
+        })
     }
 
     private inner class WeatherDataResponseHandler : Callback<RootResponse> {
