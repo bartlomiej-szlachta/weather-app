@@ -4,7 +4,7 @@ import java.util.Date
 
 data class WeatherEntity(
     val cityName: String,
-    val temperature: Double,
+    val temperature: Int,
     val pressure: Int,
     val description: String,
     val icon: String,

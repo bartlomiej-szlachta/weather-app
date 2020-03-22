@@ -3,6 +3,7 @@ package com.example.weather.dto
 import com.example.weather.model.WeatherEntity
 import com.google.gson.annotations.SerializedName
 import java.util.Date
+import kotlin.math.roundToInt
 
 data class RootResponse(
     @SerializedName("name") private val cityName: String,
@@ -13,7 +14,7 @@ data class RootResponse(
 ) {
     fun format(): WeatherEntity = WeatherEntity(
         cityName,
-        main.temperature - 273.15,
+        (main.temperature - 273.15).roundToInt(),
         main.pressure,
         weather[0].description,
         weather[0].icon,
