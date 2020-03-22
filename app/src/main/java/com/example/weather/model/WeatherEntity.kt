@@ -1,14 +1,14 @@
 package com.example.weather.model
 
-import java.util.*
+import java.util.Date
 
 data class WeatherEntity(
-    private val cityName: String,
-    private val temperature: Double,
-    private val pressure: Int,
-    private val description: String,
-    private val icon: String,
-    private val sunrise: Int,
-    private val sunset: Int,
-    private val datetime: Date
+    val cityName: String,
+    val temperature: Double,
+    val pressure: Int,
+    val description: String,
+    val icon: String,
+    val sunrise: Int,
+    val sunset: Int,
+    val datetime: Date
 )

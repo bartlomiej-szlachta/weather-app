@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Weather</string>
+    <string name="input_hint">City name</string>
+    <string name="submit_text">Confirm</string>
+    <string name="label_temperature">Temperature:</string>
+    <string name="label_pressure">Pressure:</string>
+    <string name="label_sunrise">Sunrise:</string>
+    <string name="label_sunset">Sunset:</string>
+    <string name="label_datetime">Last update:</string>
 </resources>
