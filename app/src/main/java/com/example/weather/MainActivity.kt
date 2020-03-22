@@ -9,7 +9,7 @@ import com.example.weather.dto.RootResponse
 import com.example.weather.model.WeatherEntity
 import kotlinx.android.synthetic.main.card_error.card_error
 import kotlinx.android.synthetic.main.card_error.label_error
-import kotlinx.android.synthetic.main.card_input.input_city
+import kotlinx.android.synthetic.main.card_input.input_city_text
 import kotlinx.android.synthetic.main.card_loading.card_loading
 import kotlinx.android.synthetic.main.card_weather.card_info
 import kotlinx.android.synthetic.main.card_weather.value_city_name
@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
 
         showWelcome()
 
-        input_city.addTextChangedListener(object : TextWatcher {
+        input_city_text.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {}
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -46,14 +46,12 @@ class MainActivity : AppCompatActivity() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 if (s.toString().isEmpty()) {
                     showWelcome()
-                    return
+                } else {
+                    showLoading()
+                    apiService
+                        .getWeatherData(s.toString())
+                        .enqueue(WeatherDataResponseHandler())
                 }
-
-                showLoading()
-
-                apiService
-                    .getWeatherData(s.toString())
-                    .enqueue(WeatherDataResponseHandler())
             }
         })
     }
