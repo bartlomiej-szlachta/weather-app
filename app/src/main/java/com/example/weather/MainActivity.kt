@@ -25,6 +25,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.text.DateFormat
+import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
     private val apiService: WeatherApiService by lazy {
@@ -58,6 +59,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private inner class WeatherDataResponseHandler : Callback<RootResponse> {
+        @ExperimentalStdlibApi
         override fun onResponse(call: Call<RootResponse>, response: Response<RootResponse>) {
             if (response.code() != 200) {
                 showError(response.message())
@@ -96,6 +98,7 @@ class MainActivity : AppCompatActivity() {
         label_error.text = message
     }
 
+    @ExperimentalStdlibApi
     private fun showData(data: WeatherEntity) {
         card_welcome.visibility = View.GONE
         card_loading.visibility = View.GONE
@@ -104,7 +107,7 @@ class MainActivity : AppCompatActivity() {
 
         value_city_name.text = data.cityName
         value_icon.text = data.icon
-        value_description.text = data.description
+        value_description.text = data.description.capitalize(Locale.ROOT)
         value_temperature.text = data.temperature.toString()
         value_pressure.text = data.pressure.toString()
         value_sunrise.text = DateFormat.getTimeInstance().format(data.sunrise)
