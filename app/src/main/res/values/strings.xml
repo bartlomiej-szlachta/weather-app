@@ -7,4 +7,6 @@
     <string name="label_sunrise">Sunrise:</string>
     <string name="label_sunset">Sunset:</string>
     <string name="label_datetime">Last update:</string>
+    <string name="message_welcome">Type a city name to begin</string>
+    <string name="message_loading">Loading</string>
 </resources>
