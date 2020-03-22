@@ -108,10 +108,19 @@ class MainActivity : AppCompatActivity() {
         value_city_name.text = data.cityName
         value_icon.text = data.icon
         value_description.text = data.description.capitalize(Locale.ROOT)
-        value_temperature.text = getString(R.string.value_temperature, data.temperature.toString())
-        value_pressure.text = getString(R.string.value_pressure, data.pressure.toString())
-        value_sunrise.text = DateFormat.getTimeInstance().format(data.sunrise)
-        value_sunset.text = DateFormat.getTimeInstance().format(data.sunset)
-        value_datetime.text = DateFormat.getDateTimeInstance().format(data.datetime)
+        value_temperature.text = data.temperature.toString()
+        value_pressure.text = getString(R.string.template_pressure, data.pressure.toString())
+        value_sunrise.text = getString(
+            R.string.template_sunrise,
+            DateFormat.getTimeInstance().format(data.sunrise)
+        )
+        value_sunset.text = getString(
+            R.string.template_sunset,
+            DateFormat.getTimeInstance().format(data.sunset)
+        )
+        value_datetime.text = getString(
+            R.string.template_datetime,
+            DateFormat.getDateTimeInstance().format(data.datetime)
+        )
     }
 }
