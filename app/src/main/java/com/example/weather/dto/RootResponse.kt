@@ -17,8 +17,8 @@ data class RootResponse(
         main.pressure,
         weather[0].description,
         weather[0].icon,
-        sys.sunrise,
-        sys.sunset,
-        Date(dt)
+        Date(sys.sunrise * 1000),
+        Date(sys.sunset * 1000),
+        Date(dt * 1000)
     )
 }

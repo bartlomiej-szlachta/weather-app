@@ -7,7 +7,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.weather.dto.RootResponse
-import kotlinx.android.synthetic.main.fragment_input.*
+import kotlinx.android.synthetic.main.fragment_input.button_submit
+import kotlinx.android.synthetic.main.fragment_input.input_city
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
