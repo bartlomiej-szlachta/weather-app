@@ -9,4 +9,6 @@
     <string name="label_datetime">Last update:</string>
     <string name="message_welcome">Type a city name to begin</string>
     <string name="message_loading">Loading</string>
+    <string name="value_temperature">%1$s°C</string>
+    <string name="value_pressure">%1$shPa</string>
 </resources>
