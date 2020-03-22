@@ -1,19 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgroundColor"
     android:orientation="vertical"
-    tools:context=".MainActivity"
-    android:background="@color/backgroundColor">
+    tools:context=".MainActivity">
 
     <include layout="@layout/card_input" />
 
-    <include layout="@layout/card_welcome" />
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:contentPadding="16dp">
 
-    <include layout="@layout/card_loading" />
+        <TextView
+            android:id="@+id/label_welcome"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/message_welcome" />
 
-    <include layout="@layout/card_error" />
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" />
 
-    <include layout="@layout/card_weather" />
+        <TextView
+            android:id="@+id/label_error"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <include layout="@layout/card_weather" />
+    </com.google.android.material.card.MaterialCardView>
 </LinearLayout>
