@@ -87,6 +87,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showError(message: String) {
+        if (input_city_text.text.toString().isEmpty()) {
+            showWelcome()
+            return
+        }
+
         layout_welcome.visibility = View.GONE
         progress_bar.visibility = View.GONE
         label_error.visibility = View.VISIBLE
