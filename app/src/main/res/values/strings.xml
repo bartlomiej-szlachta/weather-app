@@ -9,4 +9,5 @@
     <string name="template_sunrise">Sunrise at %1$s</string>
     <string name="template_sunset">Sunset at %1$s</string>
     <string name="template_datetime">Last update on %1$s</string>
+    <string name="image_description">Weather icon</string>
 </resources>

@@ -56,15 +56,19 @@
                 android:id="@+id/value_pressure"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
                 android:textSize="16sp" />
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/value_icon"
+        <ImageView
+            android:id="@+id/icon_weather"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight=".40"
-            android:gravity="center_horizontal|center_vertical" />
+            android:contentDescription="@string/image_description"
+            android:gravity="center_horizontal|center_vertical"
+            android:src="@drawable/icon_weather_01d"
+            android:tint="@android:color/black" />
     </LinearLayout>
 
     <LinearLayout

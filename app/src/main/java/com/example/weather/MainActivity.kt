@@ -12,10 +12,10 @@ import kotlinx.android.synthetic.main.activity_main.label_welcome
 import kotlinx.android.synthetic.main.activity_main.progress_bar
 import kotlinx.android.synthetic.main.card_input.input_city_text
 import kotlinx.android.synthetic.main.card_weather.card_info
+import kotlinx.android.synthetic.main.card_weather.icon_weather
 import kotlinx.android.synthetic.main.card_weather.value_city_name
 import kotlinx.android.synthetic.main.card_weather.value_datetime
 import kotlinx.android.synthetic.main.card_weather.value_description
-import kotlinx.android.synthetic.main.card_weather.value_icon
 import kotlinx.android.synthetic.main.card_weather.value_pressure
 import kotlinx.android.synthetic.main.card_weather.value_sunrise
 import kotlinx.android.synthetic.main.card_weather.value_sunset
@@ -102,8 +102,8 @@ class MainActivity : AppCompatActivity() {
         label_error.visibility = View.GONE
         card_info.visibility = View.VISIBLE
 
+        icon_weather.setImageResource(data.iconResource)
         value_city_name.text = data.cityName
-        value_icon.text = data.icon
         value_description.text = data.description.capitalize(Locale.ROOT)
         value_temperature.text = data.temperature.toString()
         value_pressure.text = getString(R.string.template_pressure, data.pressure.toString())

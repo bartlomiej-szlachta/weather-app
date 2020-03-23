@@ -7,7 +7,7 @@ data class WeatherEntity(
     val temperature: Int,
     val pressure: Int,
     val description: String,
-    val icon: String,
+    val iconResource: Int,
     val sunrise: Date,
     val sunset: Date,
     val datetime: Date
