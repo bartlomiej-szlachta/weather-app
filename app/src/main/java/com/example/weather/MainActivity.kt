@@ -19,12 +19,11 @@ import kotlinx.android.synthetic.main.card_weather.value_pressure
 import kotlinx.android.synthetic.main.card_weather.value_sunrise
 import kotlinx.android.synthetic.main.card_weather.value_sunset
 import kotlinx.android.synthetic.main.card_weather.value_temperature
-import kotlinx.android.synthetic.main.layout_welcome.label_welcome
 import kotlinx.android.synthetic.main.layout_welcome.layout_welcome
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.text.DateFormat
+import java.text.SimpleDateFormat
 import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
@@ -103,6 +102,9 @@ class MainActivity : AppCompatActivity() {
         label_error.visibility = View.GONE
         card_info.visibility = View.VISIBLE
 
+        val dateTimeFormatter = SimpleDateFormat("dd-MM-yyyy hh:mm", Locale.getDefault())
+        val timeFormatter = SimpleDateFormat("hh:mm", Locale.getDefault())
+
         icon_weather.setImageResource(data.iconResource)
         value_city_name.text = data.cityName
         value_description.text = data.description.capitalize(Locale.ROOT)
@@ -110,15 +112,15 @@ class MainActivity : AppCompatActivity() {
         value_pressure.text = getString(R.string.template_pressure, data.pressure.toString())
         value_sunrise.text = getString(
             R.string.template_sunrise,
-            DateFormat.getTimeInstance().format(data.sunrise)
+            timeFormatter.format(data.sunrise)
         )
         value_sunset.text = getString(
             R.string.template_sunset,
-            DateFormat.getTimeInstance().format(data.sunset)
+            timeFormatter.format(data.sunset)
         )
         value_datetime.text = getString(
             R.string.template_datetime,
-            DateFormat.getDateTimeInstance().format(data.datetime)
+            dateTimeFormatter.format(data.datetime)
         )
     }
 }
