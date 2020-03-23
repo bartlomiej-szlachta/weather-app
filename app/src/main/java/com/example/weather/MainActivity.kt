@@ -59,7 +59,11 @@ class MainActivity : AppCompatActivity() {
         @ExperimentalStdlibApi
         override fun onResponse(call: Call<RootResponse>, response: Response<RootResponse>) {
             if (response.code() != 200) {
-                showError(response.message())
+                val message = when (response.code()) {
+                    404 -> "No location found with the name provided"
+                    else -> response.message()
+                }
+                showError(message)
                 return
             }
 
@@ -68,7 +72,15 @@ class MainActivity : AppCompatActivity() {
         }
 
         override fun onFailure(call: Call<RootResponse>, t: Throwable) {
-            showError(t.message ?: "Error while loading data")
+            if (t.message == null) {
+                showError("Error while loading data")
+                return
+            }
+            if (t.message!!.toString().contains("Unable to resolve host")) {
+                showError("Mobile data is off")
+                return
+            }
+            showError(t.message.toString())
         }
     }
 
