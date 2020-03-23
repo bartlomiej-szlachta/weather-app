@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.weather.dto.RootResponse
 import com.example.weather.model.WeatherEntity
 import kotlinx.android.synthetic.main.activity_main.label_error
-import kotlinx.android.synthetic.main.activity_main.label_welcome
 import kotlinx.android.synthetic.main.activity_main.progress_bar
 import kotlinx.android.synthetic.main.card_input.input_city_text
 import kotlinx.android.synthetic.main.card_weather.card_info
@@ -20,6 +19,8 @@ import kotlinx.android.synthetic.main.card_weather.value_pressure
 import kotlinx.android.synthetic.main.card_weather.value_sunrise
 import kotlinx.android.synthetic.main.card_weather.value_sunset
 import kotlinx.android.synthetic.main.card_weather.value_temperature
+import kotlinx.android.synthetic.main.layout_welcome.label_welcome
+import kotlinx.android.synthetic.main.layout_welcome.layout_welcome
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -73,21 +74,21 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showWelcome() {
-        label_welcome.visibility = View.VISIBLE
+        layout_welcome.visibility = View.VISIBLE
         progress_bar.visibility = View.GONE
         label_error.visibility = View.GONE
         card_info.visibility = View.GONE
     }
 
     private fun showLoading() {
-        label_welcome.visibility = View.GONE
+        layout_welcome.visibility = View.GONE
         progress_bar.visibility = View.VISIBLE
         label_error.visibility = View.GONE
         card_info.visibility = View.GONE
     }
 
     private fun showError(message: String) {
-        label_welcome.visibility = View.GONE
+        layout_welcome.visibility = View.GONE
         progress_bar.visibility = View.GONE
         label_error.visibility = View.VISIBLE
         card_info.visibility = View.GONE
@@ -97,7 +98,7 @@ class MainActivity : AppCompatActivity() {
 
     @ExperimentalStdlibApi
     private fun showData(data: WeatherEntity) {
-        label_welcome.visibility = View.GONE
+        layout_welcome.visibility = View.GONE
         progress_bar.visibility = View.GONE
         label_error.visibility = View.GONE
         card_info.visibility = View.VISIBLE

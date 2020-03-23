@@ -1,8 +1,7 @@
 <resources>
     <string name="app_name">Weather</string>
-    <string name="input_hint">City name</string>
+    <string name="input_hint">Location</string>
     <string name="submit_text">Confirm</string>
-    <string name="message_welcome">Type a city name to begin</string>
     <string name="message_loading">Loading</string>
     <string name="label_unit_celsius">°C</string>
     <string name="template_pressure">%1$shPa</string>
@@ -10,4 +9,6 @@
     <string name="template_sunset">Sunset at %1$s</string>
     <string name="template_datetime">Last update on %1$s</string>
     <string name="image_description">Weather icon</string>
+    <string name="header_welcome">Welcome to the app</string>
+    <string name="message_welcome">Type a location to begin</string>
 </resources>
