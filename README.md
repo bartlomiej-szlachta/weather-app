@@ -5,11 +5,12 @@ Weather app for Android providing a functionality to check the current weather i
 
 ## Tech stack:
 
-- MVVM
-- Retrofit2
-- Gson
-- Material Design
-- Okhttp3
+- [Android Studio](https://developer.android.com/studio)
+- [MVVM](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel)
+- [Material Design](https://material.io/design/)
+- [Retrofit2](https://square.github.io/retrofit/)
+- [Gson](https://github.com/square/retrofit/tree/master/retrofit-converters/gson)
+- [Okhttp3](https://square.github.io/okhttp/)
 
 ## Credits:
 
@@ -17,8 +18,6 @@ Weather app for Android providing a functionality to check the current weather i
 -  Weather data provided by [OpenWeather](https://openweathermap.org/)
 
 ## Dev environment preparation
-
-The app is developed using [Android Studio](https://developer.android.com/studio) using API 19: Android 4.4 (KitKat).
 
 Before building, an API key needs to be provided in order for OpenWeather to allow weather data access. To provide the key, follow these steps:
 1. Create an account at https://openweathermap.org/api
