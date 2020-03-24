@@ -1,4 +1,4 @@
-package com.example.weather.dto
+package com.example.weather.model
 
 import java.util.Date
 

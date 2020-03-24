@@ -5,10 +5,12 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.example.weather.R
-import com.example.weather.network.WeatherApiService
-import com.example.weather.network.RootResponse
-import com.example.weather.dto.WeatherData
+import com.example.weather.model.WeatherData
+import com.example.weather.model.WeatherResult
+import com.example.weather.viewmodels.WeatherViewModel
 import kotlinx.android.synthetic.main.activity_main.label_error
 import kotlinx.android.synthetic.main.activity_main.progress_bar
 import kotlinx.android.synthetic.main.layout_input.input_city_text
@@ -22,22 +24,21 @@ import kotlinx.android.synthetic.main.layout_weather.value_sunrise
 import kotlinx.android.synthetic.main.layout_weather.value_sunset
 import kotlinx.android.synthetic.main.layout_weather.value_temperature
 import kotlinx.android.synthetic.main.layout_welcome.layout_welcome
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import java.text.SimpleDateFormat
 import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
-    private val apiService: WeatherApiService by lazy {
-        WeatherApiService.create()
-    }
 
+    private lateinit var viewModel: WeatherViewModel
+
+    @ExperimentalStdlibApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         showWelcome()
+
+        viewModel = ViewModelProvider(this).get(WeatherViewModel::class.java)
 
         input_city_text.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {}
@@ -49,41 +50,27 @@ class MainActivity : AppCompatActivity() {
                     showWelcome()
                 } else {
                     showLoading()
-                    apiService
-                        .getWeatherData(s.toString())
-                        .enqueue(WeatherDataResponseHandler())
+                    requestWeatherData(s.toString())
                 }
             }
         })
     }
 
-    private inner class WeatherDataResponseHandler : Callback<RootResponse> {
-        @ExperimentalStdlibApi
-        override fun onResponse(call: Call<RootResponse>, response: Response<RootResponse>) {
-            if (response.code() != 200) {
-                val message = when (response.code()) {
-                    404 -> "No location found with the name provided"
-                    else -> response.message()
+    @ExperimentalStdlibApi
+    private fun requestWeatherData(cityName: String) {
+        viewModel.getWeatherResult(cityName).observe(this, object : Observer<WeatherResult> {
+            override fun onChanged(t: WeatherResult?) {
+                if (t!!.isLoading) {
+                    showLoading()
+                } else if (!t.isSuccessful!!) {
+                    showError(t.errorMessage!!)
+                    viewModel.getWeatherResult(cityName).removeObserver(this)
+                } else {
+                    showData(t.data!!)
+                    viewModel.getWeatherResult(cityName).removeObserver(this)
                 }
-                showError(message)
-                return
             }
-
-            val rootResponse: RootResponse = response.body()!!
-            showData(rootResponse.format())
-        }
-
-        override fun onFailure(call: Call<RootResponse>, t: Throwable) {
-            if (t.message == null) {
-                showError("Error while loading data")
-                return
-            }
-            if (t.message!!.toString().contains("Unable to resolve host")) {
-                showError("Mobile data is off")
-                return
-            }
-            showError(t.message.toString())
-        }
+        })
     }
 
     private fun showWelcome() {
