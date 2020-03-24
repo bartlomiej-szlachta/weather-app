@@ -1,8 +1,8 @@
-package com.example.weather.model
+package com.example.weather.dto
 
 import java.util.Date
 
-data class WeatherEntity(
+data class WeatherData(
     val cityName: String,
     val temperature: Int,
     val pressure: Int,

@@ -1,7 +1,7 @@
-package com.example.weather.dto
+package com.example.weather.network
 
 import com.example.weather.R
-import com.example.weather.model.WeatherEntity
+import com.example.weather.dto.WeatherData
 import com.google.gson.annotations.SerializedName
 import java.util.Date
 import kotlin.math.roundToInt
@@ -13,16 +13,17 @@ data class RootResponse(
     @SerializedName("sys") private val sys: SysResponse,
     @SerializedName("dt") private val dt: Long
 ) {
-    fun format(): WeatherEntity = WeatherEntity(
-        cityName,
-        (main.temperature - 273.15).roundToInt(),
-        main.pressure,
-        weather[0].description,
-        getIconResource(weather[0].icon),
-        Date(sys.sunrise * 1000),
-        Date(sys.sunset * 1000),
-        Date(dt * 1000)
-    )
+    fun format(): WeatherData =
+        WeatherData(
+            cityName,
+            (main.temperature - 273.15).roundToInt(),
+            main.pressure,
+            weather[0].description,
+            getIconResource(weather[0].icon),
+            Date(sys.sunrise * 1000),
+            Date(sys.sunset * 1000),
+            Date(dt * 1000)
+        )
 
     private fun getIconResource(iconName: String): Int = when (iconName.substring(0, 2).toInt()) {
         1 -> R.drawable.icon_weather_01d

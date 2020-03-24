@@ -1,12 +1,14 @@
-package com.example.weather
+package com.example.weather.ui
 
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.example.weather.dto.RootResponse
-import com.example.weather.model.WeatherEntity
+import com.example.weather.R
+import com.example.weather.network.WeatherApiService
+import com.example.weather.network.RootResponse
+import com.example.weather.dto.WeatherData
 import kotlinx.android.synthetic.main.activity_main.label_error
 import kotlinx.android.synthetic.main.activity_main.progress_bar
 import kotlinx.android.synthetic.main.layout_input.input_city_text
@@ -113,7 +115,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     @ExperimentalStdlibApi
-    private fun showData(data: WeatherEntity) {
+    private fun showData(data: WeatherData) {
         layout_welcome.visibility = View.GONE
         progress_bar.visibility = View.GONE
         label_error.visibility = View.GONE

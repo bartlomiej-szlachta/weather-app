@@ -1,6 +1,6 @@
-package com.example.weather
+package com.example.weather.network
 
-import com.example.weather.dto.RootResponse
+import com.example.weather.BuildConfig
 import okhttp3.HttpUrl
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -20,7 +20,9 @@ interface WeatherApiService {
             val authInterceptor = Interceptor { chain ->
                 val newUrl: HttpUrl = chain.request().url
                     .newBuilder()
-                    .addQueryParameter("APPID", BuildConfig.API_KEY)
+                    .addQueryParameter("APPID",
+                        BuildConfig.API_KEY
+                    )
                     .build()
                 val newRequest: Request = chain.request()
                     .newBuilder()
