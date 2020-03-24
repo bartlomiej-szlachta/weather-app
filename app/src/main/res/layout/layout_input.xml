@@ -14,6 +14,7 @@
             android:layout_height="wrap_content"
             app:hintEnabled="false">
 
+            <!-- TODO: 'SPAN_EXCLUSIVE_EXCLUSIVE spans cannot have a zero length' error -->
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/input_city_text"
                 android:layout_width="match_parent"
