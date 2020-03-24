@@ -5,6 +5,7 @@ Weather app for Android providing a functionality to check the current weather i
 
 ## Tech stack
 
+- [Kotlin](https://kotlinlang.org/)
 - [Android Studio](https://developer.android.com/studio)
 - [MVVM](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel)
 - [Material Design](https://material.io/design/)
