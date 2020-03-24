@@ -8,7 +8,7 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <include layout="@layout/card_input" />
+    <include layout="@layout/layout_input" />
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
@@ -31,6 +31,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-        <include layout="@layout/card_weather" />
+        <include layout="@layout/layout_weather" />
     </com.google.android.material.card.MaterialCardView>
 </LinearLayout>
