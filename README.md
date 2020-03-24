@@ -3,7 +3,7 @@ Weather app for Android providing a functionality to check the current weather i
 
 <img src="screenshots/screenshot-welcome.png" width="33%"> <img src="screenshots/screenshot-london.png" width="33%"> <img src="screenshots/screenshot-chicago.png" width="33%">
 
-## Tech stack:
+## Tech stack
 
 - [Android Studio](https://developer.android.com/studio)
 - [MVVM](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel)
@@ -12,7 +12,7 @@ Weather app for Android providing a functionality to check the current weather i
 - [Gson](https://github.com/square/retrofit/tree/master/retrofit-converters/gson)
 - [Okhttp3](https://square.github.io/okhttp/)
 
-## Credits:
+## Credits
 
 -  Weather icons made by [Freepik](https://www.flaticon.com/authors/freepik) from [www.flaticon.com](https://www.flaticon.com/).
 -  Weather data provided by [OpenWeather](https://openweathermap.org/)
