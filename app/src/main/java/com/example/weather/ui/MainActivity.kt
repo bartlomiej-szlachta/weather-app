@@ -98,6 +98,14 @@ class MainActivity : AppCompatActivity() {
         label_error.visibility = View.VISIBLE
         layout_info.visibility = View.GONE
 
+        if (message.contains("Not Found")) {
+            label_error.text = getString(R.string.message_error_not_found)
+            return
+        }
+        if (message.contains("Unable to resolve host")) {
+            label_error.text = getString(R.string.message_offline)
+            return
+        }
         label_error.text = message
     }
 

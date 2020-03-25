@@ -11,4 +11,6 @@
     <string name="image_description">Weather icon</string>
     <string name="header_welcome">Welcome to the app</string>
     <string name="message_welcome">Type a location to begin</string>
+    <string name="message_error_not_found">No location found with the name provided</string>
+    <string name="message_offline">Mobile data is off</string>
 </resources>
