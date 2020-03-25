@@ -26,10 +26,11 @@ Before building, an API key needs to be provided in order for OpenWeather to all
 3. Create file named `local.properties` in the project root directory
 4. Paste the following content to the file:
 ```
-sdk.dir=C\:\\Users\\SQ019\\AppData\\Local\\Android\\Sdk
+sdk.dir=PATH_TO_SDK
 api_key="YOUR_KEY"
 ```
-5. Replace *YOUR_KEY* with the key from the point 2.
+5. Replace *PATH_TO_SDK* with your local path to SDK.
+6. Replace *YOUR_KEY* with the key from the point 2.
 
 ## App instalation
 
